@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="Financial Services Account Listing" icon-name="custom:custom63">
+    <lightning-card title="Financial Services Account Listing" icon-name="standard:account">
         <div class="slds-m-around_medium">
             <template if:true={accountList}>
                 <lightning-datatable
@@ -10,7 +10,7 @@
                     draft-values={draftValues}
                     sorted-by={sortBy}
                     sorted-direction={sortDirection}
-                    onsort={sort}>
+                    onsort={sort} onrowaction={callRowAction} hide-checkbox-column="true">
                 </lightning-datatable>
             </template>
         </div>

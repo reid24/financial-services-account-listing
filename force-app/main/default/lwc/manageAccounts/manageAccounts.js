@@ -11,12 +11,17 @@ import { getRecordNotifyChange } from 'lightning/uiRecordApi';
 //recordLink and ownerName are created manually in the wired method getAccounts below
 //We need the fieldName to be the URL to the account record.  This works but has the drawback
 //that we cannot make the Account Name field editable in inline edit this way.
+//The alternative is using a button (commented out below) but this seems to hide the inline edit pencil icon.
 //There is not a workaround at this time.
 //The Account Owner column displays the name of the Owner
 //We support editing this field by special treatment of it in the Apex method updateAccounts
 const COLS = [
+    // { 
+    //     label: 'Account Name', fieldName: 'Name', editable: true, sortable: true, type: 'button',  
+    //     typeAttributes: { label: { fieldName: 'Name' }, variant:'base' }
+    // },
     { 
-        label: 'Account Name', fieldName: 'recordLink', editable: true, sortable: true, type: 'url',  
+        label: 'Account Name', fieldName: 'recordLink', editable: false, sortable: true, type: 'url',  
         typeAttributes: { label: { fieldName: "Name" }, tooltip:"Name", target: "_blank" }
     },
     { label: 'Account Owner', fieldName: 'ownerName', editable: true, sortable: true },
@@ -44,6 +49,8 @@ export default class ManageAccounts extends LightningElement {
     @track 
     wiredAccountList = [];  
 
+    
+
     //wired method to fetch the accounts list
     @wire(getAccountsApex)
     getAccounts(result) {  
@@ -68,6 +75,11 @@ export default class ManageAccounts extends LightningElement {
             this.accountList = undefined;  
         } 
     }  
+
+    callRowAction(event){
+        console.log('onclickAccountName', JSON.stringify(event));
+        window.open(event.detail.row.recordLink, '_blank');
+    }
 
     //support sorting by Account Name and Account Owner columns
     sort(event) {
