@@ -12,7 +12,7 @@ import { getRecordNotifyChange } from 'lightning/uiRecordApi';
 //We need the fieldName to be the URL to the account record.  This works but has the drawback
 //that we cannot make the Account Name field editable in inline edit this way.
 //The alternative is using a button (commented out below) but this seems to hide the inline edit pencil icon.
-//There is not a workaround at this time.
+//There is not a workaround to support both inline edit and a hyperlinked account name at the same time.
 //The Account Owner column displays the name of the Owner
 //We support editing this field by special treatment of it in the Apex method updateAccounts
 const COLS = [
