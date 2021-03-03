@@ -35,6 +35,7 @@ export default class ManageAccounts extends LightningElement {
     sortBy = "Name";
     sortDirection = "asc";
 
+    //holds the account name filter field value, connected to the lightning input at the top of the page
     filter;
 
     //the inline edit draft values are stored in an array
