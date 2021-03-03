@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Financial Services Account Listing" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={accountList}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={accountList}
+                    columns={columns}
+                    onsave={handleSave}
+                    draft-values={draftValues}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={sort}>
+                </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+</template>
