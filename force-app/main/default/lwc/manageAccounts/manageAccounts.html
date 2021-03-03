@@ -1,5 +1,8 @@
 <template>
     <lightning-card title="Financial Services Account Listing" icon-name="standard:account">
+        <div class="slds-m-around_medium" style="width:40%">
+            <lightning-input type="text" value={filter} label="Filter Accounts (Contains, Case Insensitive)" onchange={handleFilterChange}></lightning-input>
+        </div>
         <div class="slds-m-around_medium">
             <template if:true={accountList}>
                 <lightning-datatable

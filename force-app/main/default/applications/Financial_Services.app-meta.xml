@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Demo of Financial Services Account listing component</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Financial Services</label>
+    <navType>Standard</navType>
+    <tabs>standard-Account</tabs>
+    <tabs>Financial_Services_Account_Listing</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Financial_Services_UtilityBar</utilityBar>
+</CustomApplication>

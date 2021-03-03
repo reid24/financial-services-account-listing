@@ -35,6 +35,8 @@ export default class ManageAccounts extends LightningElement {
     sortBy = "Name";
     sortDirection = "asc";
 
+    filter;
+
     //the inline edit draft values are stored in an array
     draftValues = [];
     
@@ -44,6 +46,9 @@ export default class ManageAccounts extends LightningElement {
     //accountList is referenced by the datatable, and populated via the wired getAccounts method
     @track 
     accountList = [];  
+
+    //this list is maintained for filtering to revert back
+    fullAccountList = [];
     
     //a separate wired list is required to support the refreshApex call effectively
     @track 
@@ -109,6 +114,29 @@ export default class ManageAccounts extends LightningElement {
 
         //finally assign the sorted list to the accountList class attribute
         this.accountList = parseData;
+    }
+
+    handleFilterChange(event){
+        console.log(event.detail.value);
+        this.filter = event.detail.value;
+        
+        if(!this.filter || this.filter == '') {
+            this.accountList = this.fullAccountList;
+            return;
+        }
+
+        if(this.fullAccountList.length == 0) this.fullAccountList = this.accountList;
+        
+        var localFilter = this.filter.toLowerCase();
+        
+        let tempList = [];
+        this.fullAccountList.forEach(function(acct){
+            let accountName = acct['Name'];
+            console.log(accountName);
+            console.log(accountName.includes(localFilter));
+            if(accountName && accountName.toLowerCase().includes(localFilter)) tempList.push(acct);
+        })
+        this.accountList = tempList;
     }
 
     async handleSave(event) {

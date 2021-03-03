@@ -5,6 +5,10 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>Financial_Services</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
         <members>Financial_Services_Account_Listing</members>
         <name>CustomTab</name>
     </types>
