@@ -66,7 +66,7 @@ public class Test_ManageAccountsController {
             'ownerName' => 'Test SunLife'
         });
 
-        system.assertEquals('Success: accounts updated successfully', ManageAccountsController.updateAccounts(data));
+        system.assertEquals('result', ManageAccountsController.updateAccounts(data));
     }
 
     //Test updating the accounts exception, changing an owner to a user that does not exist

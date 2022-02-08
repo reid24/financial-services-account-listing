@@ -30,8 +30,9 @@ public inherited sharing class ManageAccountsController {
     //we need to lookup the Owner ID value by name to assign that to the Account > OwnerId field.
     //The owner name is provided in the ownerName field in the LWC datatable, hence we expect it in the record map received
     @AuraEnabled
-    public static string updateAccounts(Object data) {
-        //Collect the owner names, will only be present if some owners have been modified        
+    public static Map<String, Object> updateAccounts(Object data) {
+        //Collect the owner names, will only be present if some owners have been modified  
+        Map<String, Object> response = new Map<String, Object>();      
         Set<String> ownerNames = new Set<String>();
         for(Object record : (List<Object>)data) {
             Map<Object,Object> recordMap = (Map<Object,Object>)record;
@@ -81,7 +82,9 @@ public inherited sharing class ManageAccountsController {
 
         //finally perform the DML update and return a success message
         update accountsForUpdate;
-        return 'Success: accounts updated successfully';
+        response.put('Success',true);
+        response.put('result','Success: accounts updated successfully');
+        return ;
     }
 
 }
